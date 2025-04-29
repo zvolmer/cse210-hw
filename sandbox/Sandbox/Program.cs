@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Sandbox World!");
+        Console.Write("What is your favorite quote? ");
+        string quote = Console.ReadLine();
+        Console.Write("Who is the author of the quote? ");
+        string author = Console.ReadLine();
+
+        Console.WriteLine($"\"{quote}\" -{author}");
     }
 }
