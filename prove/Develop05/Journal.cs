@@ -20,7 +20,7 @@ public class Journal
             Console.WriteLine("Date: "     + entry.Date);
             Console.WriteLine("Prompt: "   + entry.Prompt);
             Console.WriteLine("Response: "+ entry.Response);
-            Console.WriteLine();  // blank line between entries
+            Console.WriteLine();  
         }
     }
 
@@ -30,7 +30,6 @@ public class Journal
         {
             foreach (Entry e in entries)
             {
-                // date|prompt|response
                 outputFile.WriteLine($"{e.Date}{Separator}{e.Prompt}{Separator}{e.Response}");
             }
         }
