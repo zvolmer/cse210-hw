@@ -15,9 +15,12 @@ public class Journal
     public void Display()
     {
         Console.WriteLine("\n--- Journal Entries ---");
-        foreach (var entry in entries)
+        foreach (Entry entry in entries)
         {
-            Console.WriteLine(entry.ToString());
+            Console.WriteLine("Date: "     + entry.Date);
+            Console.WriteLine("Prompt: "   + entry.Prompt);
+            Console.WriteLine("Response: "+ entry.Response);
+            Console.WriteLine();  // blank line between entries
         }
     }
 
@@ -25,10 +28,10 @@ public class Journal
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            foreach (var entry in entries)
+            foreach (Entry e in entries)
             {
-                string line = $"{entry.Date}{Separator}{entry.Prompt}{Separator}{entry.Response}";
-                outputFile.WriteLine(line);
+                // date|prompt|response
+                outputFile.WriteLine($"{e.Date}{Separator}{e.Prompt}{Separator}{e.Response}");
             }
         }
         Console.WriteLine("Journal saved successfully.");
@@ -41,9 +44,10 @@ public class Journal
             Console.WriteLine("File not found.");
             return;
         }
+
         entries.Clear();
         string[] lines = File.ReadAllLines(filename);
-        foreach (var line in lines)
+        foreach (string line in lines)
         {
             string[] parts = line.Split(Separator);
             if (parts.Length == 3)

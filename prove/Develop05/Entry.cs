@@ -7,13 +7,9 @@ public class Entry
 
     public Entry(string date, string prompt, string response)
     {
-        Date     = date;
-        Prompt   = prompt;
+        Date = date;
+        Prompt = prompt;
         Response = response;
     }
 
-    public override string ToString()
-    {
-        return $"Date: {Date}\nPrompt: {Prompt}\nResponse: {Response}\n";
-    }
 }
