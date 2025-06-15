@@ -1,48 +1,42 @@
 using System;
 
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        DisplayWelcomeMessage();
-
-        string userName = PromptUserName();
-        int userNumber = PromptUserNumber();
-
-        int squaredNumber = SquareNumber(userNumber);
-
-        DisplayResult(userName, squaredNumber);
-    }
-
-    static void DisplayWelcomeMessage()
-    {
-        Console.WriteLine("Welcome to the program!");
-    }
-
-    static string PromptUserName()
-    {
-        Console.Write("Please enter your name: ");
-        string name = Console.ReadLine();
-
-        return name;
-    }
-
-    static int PromptUserNumber()
-    {
-        Console.Write("Please enter your favorite number: ");
-        int number = int.Parse(Console.ReadLine());
-
-        return number;
-    }
-
-    static int SquareNumber(int number)
-    {
-        int square = number * number;
-        return square;
-    }
-
-    static void DisplayResult(string name, int square)
-    {
-        Console.WriteLine($"{name}, the square of your number is {square}");
+        bool keepRunning = true;
+        while (keepRunning)
+        {
+            Console.Clear();
+            Console.WriteLine("Mindfulness Program");
+            Console.WriteLine("-------------------");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Reflection Activity");
+            Console.WriteLine("3. Listing Activity");
+            Console.WriteLine("4. Quit");
+            Console.Write("\nSelect an option: ");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    new BreathingActivity().Run();
+                    break;
+                case "2":
+                    new ReflectionActivity().Run();
+                    break;
+                case "3":
+                    new ListingActivity().Run();
+                    break;
+                case "4":
+                    keepRunning = false;
+                    continue;
+                default:
+                    Console.WriteLine("Invalid choice. Press Enter to try again.");
+                    Console.ReadLine();
+                    continue;
+            }
+            Console.WriteLine("\nPress Enter to return to the main menu.");
+            Console.ReadLine();
+        }
+        Console.WriteLine("Goodbye!");
     }
 }
