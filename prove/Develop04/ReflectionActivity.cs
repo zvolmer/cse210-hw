@@ -1,20 +1,24 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
-
-    public class ReflectionActivity : Activity
+public class ReflectionActivity
+{
+    public void Run()
     {
-        private List<string> _prompts = new List<string>
-        {
+        Console.Clear();
+        Console.WriteLine("--- Reflection Activity ---");
+        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience.");
+        Console.WriteLine();
+        Console.Write("Enter duration (seconds): ");
+        int duration = int.Parse(Console.ReadLine() ?? "0");
+        Console.WriteLine();
+        string[] prompts = {
             "Think of a time when you stood up for someone else.",
             "Think of a time when you did something really difficult.",
             "Think of a time when you helped someone in need.",
             "Think of a time when you did something truly selfless."
         };
-
-        private List<string> _questions = new List<string>
-        {
+        string[] questions = {
             "Why was this experience meaningful to you?",
             "Have you ever done anything like this before?",
             "How did you get started?",
@@ -25,31 +29,20 @@ using System.Threading;
             "What did you learn about yourself through this experience?",
             "How can you keep this experience in mind in the future?"
         };
-
-        private Random _rand = new Random();
-
-        public ReflectionActivity()
-            : base(
-                "Reflection Activity",
-                "This activity will help you reflect on times in your life when you have shown strength and resilience."
-            )
-        { }
-
-        protected override void PerformActivity()
+        Random rand = new Random();
+        string prompt = prompts[rand.Next(prompts.Length)];
+        Console.WriteLine("\n--- Prompt ---");
+        Console.WriteLine(prompt);
+        Console.WriteLine("\nWhen you have something in mind, press Enter.");
+        Console.ReadLine();
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        while (DateTime.Now < endTime)
         {
-            string prompt = _prompts[_rand.Next(_prompts.Count)];
-            Console.WriteLine("\n--- Prompt ---");
-            Console.WriteLine(prompt);
-            Console.WriteLine("\nWhen you have something in mind, press Enter.");
-            Console.ReadLine();
-
-            DateTime endTime = DateTime.Now.AddSeconds(Duration);
-            while (DateTime.Now < endTime)
-            {
-                string question = _questions[_rand.Next(_questions.Count)];
-                Console.WriteLine("\n" + question);
-                Thread.Sleep(5000); 
-            }
+            string question = questions[rand.Next(questions.Length)];
+            Console.WriteLine("\n" + question);
+            Thread.Sleep(5000);
         }
+        Console.WriteLine("\nWell done!");
+        Console.WriteLine($"You completed {duration} seconds of Reflection Activity.");
     }
-
+}

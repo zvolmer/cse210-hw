@@ -15,24 +15,23 @@ public class Program
             Console.WriteLine("3. Listing Activity");
             Console.WriteLine("4. Quit");
             Console.Write("\nSelect an option: ");
-            switch (Console.ReadLine())
+            string choice = Console.ReadLine() ?? "";
+            if (choice == "1")
+                new BreathingActivity().Run();
+            else if (choice == "2")
+                new ReflectionActivity().Run();
+            else if (choice == "3")
+                new ListingActivity().Run();
+            else if (choice == "4")
             {
-                case "1":
-                    new BreathingActivity().Run();
-                    break;
-                case "2":
-                    new ReflectionActivity().Run();
-                    break;
-                case "3":
-                    new ListingActivity().Run();
-                    break;
-                case "4":
-                    keepRunning = false;
-                    continue;
-                default:
-                    Console.WriteLine("Invalid choice. Press Enter to try again.");
-                    Console.ReadLine();
-                    continue;
+                keepRunning = false;
+                continue;
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Press Enter to try again.");
+                Console.ReadLine();
+                continue;
             }
             Console.WriteLine("\nPress Enter to return to the main menu.");
             Console.ReadLine();
