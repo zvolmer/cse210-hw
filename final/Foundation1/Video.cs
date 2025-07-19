@@ -10,24 +10,24 @@ public class Video
 
     public Video(string title, string author, int lengthSec)
     {
-        this.Title = title;
-        this.Author = author;
-        this.LengthSec = lengthSec;
-        this.comments = new List<Comment>();
+        Title = title;
+        Author = author;
+        LengthSec = lengthSec;
+        comments = new List<Comment>();
     }
 
     public void AddComment(Comment comment)
     {
-        this.comments.Add(comment);
+        comments.Add(comment);
     }
 
     public int GetCommentCount()
     {
-        return this.comments.Count;
+        return comments.Count;
     }
 
     public List<Comment> GetComments()
     {
-        return new List<Comment>(this.comments);
+        return new List<Comment>(comments);
     }
 }

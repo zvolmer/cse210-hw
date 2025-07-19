@@ -7,7 +7,7 @@ public class Comment
 
     public Comment(string author, string text)
     {
-        this.Author = author;
-        this.Text = text;
+        Author = author;
+        Text = text;
     }
 }
